@@ -1,4 +1,4 @@
-# Scripts úteis escritos em PHP/JavaScript
+# Scripts úteis escritos em PHP/JavaScript Puro
 
 O intuito desse repositório é ser uma coletânea de scripts PHP e JS, que podem ser implementados em projetos ou utilizados para fins didáticos.
 
