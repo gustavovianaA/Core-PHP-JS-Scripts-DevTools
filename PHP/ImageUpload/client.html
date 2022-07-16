@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Upload Multiple IMages</title>
+</head>
+
+<body>
+
+    <h1>Multiple Images Upload</h1>
+    <form method="POST" enctype="multipart/form-data" action="uploadImages.php">
+
+        <div>
+            <label for="exampleInputFile">Upload your Images:</label>
+            <input required type="file" name="imagesUpload[]" accept="image/*" id="imagesUpload" multiple />
+        </div>
+
+        <input type="submit" value="Upload Images" />
+    </form>
+
+
+</body>
+
+</html>
