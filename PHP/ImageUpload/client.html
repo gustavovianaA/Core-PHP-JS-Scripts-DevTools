@@ -11,14 +11,19 @@
     <form method="POST" enctype="multipart/form-data" action="uploadImages.php">
 
         <div>
-            <label for="exampleInputFile">Upload your Images:</label>
-            <input required type="file" name="imagesUpload[]" accept="image/*" id="imagesUpload" multiple />
+            <label for="singleImage">Upload Single Image:</label>
+            <input required type="file" name="singleImage" accept="image/*" id="singleImage" />
+        </div>
+
+        <div>
+            <label for="multipleImages">Upload Multiple Images:</label>
+            <input required type="file" name="multipleImages[]" accept="image/*" id="multipleImages" multiple />
         </div>
 
         <input type="submit" value="Upload Images" />
     </form>
 
-
+    <p><a href="uploads">Uploaded Images folder</a></p>
 </body>
 
 </html>

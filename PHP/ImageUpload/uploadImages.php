@@ -1,52 +1,45 @@
 <?php
 
-//Verify request method and selected images existance
 if ($_SERVER["REQUEST_METHOD"] !== 'POST') {
     header('Location: client.html');
     die();
 }
 
-if (empty($_FILES['imagesUpload']['name'][0])) {
-    header('Location: client.html');
-    die();
-}
 
 //Start Upload Script
 define("ACCEPTED_IMG_EXT", ['png', 'jpg', 'jpeg']);
 
 function imagesUpload($imgs, $category = '')
 {
+    if (empty($imgs['name'][0])) {
+        header('Location: client.html');
+        die();
+    }
 
     $organizedImages = [];
 
     //Reorganize images array
-    foreach ($imgs['imagesUpload'] as $key => $val) {
+    foreach ($imgs as $key => $val) {
         foreach ($val as $key2 => $imgAttribute) {
             $organizedImages[$key2][$key] =  $imgAttribute;
         }
     }
 
     foreach ($organizedImages as $img) {
-        if (isset($category))
-            imgUpload($img, $category);
-        else
-            imgUpload($img);
+        imgUpload($img, $category);
     }
 }
 
-function imgUpload($img, $category = '')
+function imgUpload($img, $category = '', $single = false)
 {
-    $valid = true;
 
     $ext = explode("/", $img['type'])[1];
 
-    if (in_array($ext, ACCEPTED_IMG_EXT)) {
-        $fileExt = $ext;
-    } else {
-        $valid = false;
-    }
+    $fileExt = in_array($ext, ACCEPTED_IMG_EXT) ? $ext : false;
 
-    if ($valid === true) {
+    $single = $single ? 'single-' : '';
+
+    if ($fileExt !== false) {
 
         $dirUploads = empty($category) ? "uploads/" : "uploads/$category/";
 
@@ -54,13 +47,19 @@ function imgUpload($img, $category = '')
             mkdir($dirUploads, 0777, true);
         }
 
-        move_uploaded_file($img['tmp_name'], $dirUploads . $img['name']);
+        move_uploaded_file($img['tmp_name'], $dirUploads . $single .  $img['name']);
     }
 }
 
-//Upload to dir: uploads
-imagesUpload($_FILES);
+/*
+Use one of the following functions for the upload.
+*/
 
-//Upload to dir: uploads/$category
+//Upload to dir: uploads
+//imagesUpload($_FILES['multipleImages']);
+
+//Upload to dir: uploads/$category 
 $category = rand();
-imagesUpload($_FILES, $category);
+imagesUpload($_FILES['multipleImages'], $category);
+imgUpload($_FILES['singleImage'], $category, true);
+header('Location: client.html');

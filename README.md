@@ -7,7 +7,7 @@ O intuito desse repositório é ser uma coletânea de scripts PHP e JS, que pode
 PHP
 
 <ul>
-<li><a href="PHP/ImageUpload">Imagens: Upload de imagens com PHP v.01 - not ready</a></li>
+<li><a href="PHP/ImageUpload">Imagens: Upload de imagens com PHP v.02 - not ready</a></li>
 <li>Imagens: Upload de imagens com PHP (POO)</li>
 </ul>
 
@@ -17,7 +17,9 @@ JavaScript
 <li>Requisições AJAX com JS</li>
 </ul>
 
--- English Readme --
+<hr>
+English Readme 
+<hr>
 
 # Useful scripts written in core PHP/Javascript
 
@@ -28,7 +30,7 @@ The purpose of this repository it is to be a collection of PHP and JS scripts. T
 PHP
 
 <ul>
-<li><a href="PHP/ImageUpload">Images: PHP images Upload v.01 - not ready</a></li>
+<li><a href="PHP/ImageUpload">Images: PHP images Upload v.02 - not ready</a></li>
 <li>Images: PHP images Upload (OOP)</li>
 </ul>
 
